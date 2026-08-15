@@ -1,0 +1,15 @@
+# Compiled files
+*.o
+*.a
+
+# Executable
+diva
+
+# Debug files
+*.dSYM/
+core
+core.*
+
+# OS files
+.DS_Store
+Thumbs.db

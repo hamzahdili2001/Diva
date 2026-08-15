@@ -1,10 +1,10 @@
 # Compiled files
 *.o
-*.out
 *.a
 
 # Executable
 diva
+*.out
 
 # Debug files
 *.dSYM/

@@ -9,11 +9,7 @@ int	main(void)
 	{
 		ft_putstr("\ndiva> ");
 		ft_scan(buffer);
-		if (ft_strcmp(buffer, "exit") == 0)
-			return (0);
-		// check_input(buffer);
-		ft_putstr(buffer);
-		ft_putchar('\n');
+		check_input(buffer);
 	}
 	return (0);
 }

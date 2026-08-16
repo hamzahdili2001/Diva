@@ -8,7 +8,7 @@ size_t	get_filesize(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (0);
+		return (FALSE);
 	length = 0;
 	while (read(fd, &byte, 1))
 		length++;

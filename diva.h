@@ -4,12 +4,15 @@
 # define TRUE 1
 # define FALSE 0
 
+# include <dirent.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 void		ft_putchar(char c);
 void		ft_putstr(char *str);
+void		ft_putnbr(long nbr);
+char		*ft_strrchr(char *s, int c);
 void		display_logo(void);
 void		check_input(char *input);
 int			ft_scan(char *buffer);
@@ -18,6 +21,7 @@ int			ft_strcmp(char *s1, char *s2);
 // commands:
 void		ft_help(void);
 void		ft_exit(void);
+void		ft_playlists(void);
 typedef struct s_commands
 {
 	char	*command;

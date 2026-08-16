@@ -25,7 +25,7 @@ static const t_commands	g_table[] = {
 	},
 };
 
-void	ft_playlists(void)
+void	ft_playlists(char *args)
 {
 	DIR				*dir;
 	struct dirent	*entry;
@@ -33,6 +33,7 @@ void	ft_playlists(void)
 	char			*filename;
 	int				index;
 
+	(void)args;
 	dir = opendir("playlists");
 	if (!dir)
 		return ;
@@ -64,15 +65,17 @@ void	ft_playlists(void)
 	closedir(dir);
 }
 
-void	ft_exit(void)
+void	ft_exit(char *args)
 {
+	(void)args;
 	exit(0);
 }
 
-void	ft_help(void)
+void	ft_help(char *args)
 {
 	const t_commands	*table;
 
+	(void)args;
 	table = g_table;
 	ft_putstr("\nCOMMAND\t\tDESCRIPTION\n\n");
 	while (table->command)
@@ -85,19 +88,25 @@ void	ft_help(void)
 	}
 }
 
+// TODO: function should take arr of args not one str.
+// TODO: that tokens[0] need to be implemented.
 void	check_input(char *input)
 {
 	const t_commands	*table;
+	char				**tokens;
 
+	tokens = ft_split(input);
 	table = g_table;
 	while (table->command)
 	{
-		if (ft_strcmp(input, table->command) == 0)
+		if (ft_strcmp(tokens[0], table->command) == 0)
 		{
-			table->function();
+			table->function(tokens[0]);
+			free_arr(tokens);
 			return ;
 		}
 		table++;
 	}
+	free_arr(tokens);
 	ft_putstr("\nCommand not found.\n");
 }

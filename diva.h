@@ -9,24 +9,29 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+int			ft_strlen(char *str);
+int			is_space(char c);
 void		ft_putchar(char c);
 void		ft_putstr(char *str);
 void		ft_putnbr(long nbr);
 char		*ft_strrchr(char *s, int c);
+char		*ft_strndup(char *str, int n);
+char		**ft_split(char *input);
 void		display_logo(void);
+void		free_arr(char **arr);
 void		check_input(char *input);
 int			ft_scan(char *buffer);
 int			ft_strcmp(char *s1, char *s2);
 
 // commands:
-void		ft_help(void);
-void		ft_exit(void);
-void		ft_playlists(void);
+void		ft_help(char *args);
+void		ft_exit(char *args);
+void		ft_playlists(char *args);
 typedef struct s_commands
 {
 	char	*command;
 	char	*desc;
-	void	(*function)(void);
+	void	(*function)(char *args);
 
 }			t_commands;
 #endif

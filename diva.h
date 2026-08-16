@@ -22,16 +22,21 @@ void		free_arr(char **arr);
 void		check_input(char *input);
 int			ft_scan(char *buffer);
 int			ft_strcmp(char *s1, char *s2);
+int			ft_atoi(char *str);
 
 // commands:
-void		ft_help(char *args);
-void		ft_exit(char *args);
-void		ft_playlists(char *args);
+void		ft_help(char **args);
+void		ft_exit(char **args);
+void		ft_playlists(char **args);
+void		ft_playlist(char **args);
+
+// test
+void		show_tokens(char **tokens);
 typedef struct s_commands
 {
 	char	*command;
 	char	*desc;
-	void	(*function)(char *args);
+	void	(*function)(char **args);
 
 }			t_commands;
 #endif

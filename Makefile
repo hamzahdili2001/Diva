@@ -3,7 +3,7 @@ NAME = diva
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = commands.c helpers.c file_helpers.c  main.c
+SRCS = commands.c numbers_helpers.c helpers.c file_helpers.c  main.c
 
 OBJS = $(SRCS:.c=.o)
 

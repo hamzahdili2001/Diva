@@ -19,13 +19,24 @@ static const t_commands	g_table[] = {
 
 	},
 	{
+		.command = "tokens",
+		.desc = "just a test",
+		.function = show_tokens,
+	},
+	{
+		.command = "playlist",
+		.desc = "show playlist by index",
+		.function = ft_playlist,
+	},
+
+	{
 		.command = NULL,
 		.desc = NULL,
 		.function = NULL,
 	},
 };
 
-void	ft_playlists(char *args)
+void	ft_playlists(char **args)
 {
 	DIR				*dir;
 	struct dirent	*entry;
@@ -65,13 +76,56 @@ void	ft_playlists(char *args)
 	closedir(dir);
 }
 
-void	ft_exit(char *args)
+void	ft_playlist(char **args)
+{
+	DIR				*dir;
+	struct dirent	*entry;
+	int				i;
+	int				request;
+	char			*extention;
+
+	if (!*args)
+		return ;
+	request = ft_atoi(*args);
+	if (request <= 0)
+	{
+		ft_putstr("Invalid Number\n");
+		return ;
+	}
+	dir = opendir("playlists");
+	if (!dir)
+		return ;
+	entry = readdir(dir);
+	i = 1;
+	while (entry)
+	{
+		extention = ft_strrchr(entry->d_name, '.');
+		if (extention)
+		{
+			if (ft_strcmp(extention, ".playlist") == 0)
+			{
+				if (request == i)
+				{
+					// show_playlist(entry->d_name);
+					ft_putstr(entry->d_name);
+					closedir(dir);
+					return ;
+				}
+				i++;
+			}
+		}
+		entry = readdir(dir);
+	}
+	closedir(dir);
+}
+
+void	ft_exit(char **args)
 {
 	(void)args;
 	exit(0);
 }
 
-void	ft_help(char *args)
+void	ft_help(char **args)
 {
 	const t_commands	*table;
 
@@ -88,8 +142,16 @@ void	ft_help(char *args)
 	}
 }
 
-// TODO: function should take arr of args not one str.
-// TODO: that tokens[0] need to be implemented.
+void	show_tokens(char **tokens)
+{
+	while (*tokens)
+	{
+		ft_putstr(*tokens);
+		ft_putchar('\n');
+		tokens++;
+	}
+}
+
 void	check_input(char *input)
 {
 	const t_commands	*table;
@@ -101,7 +163,7 @@ void	check_input(char *input)
 	{
 		if (ft_strcmp(tokens[0], table->command) == 0)
 		{
-			table->function(tokens[0]);
+			table->function(&tokens[1]);
 			free_arr(tokens);
 			return ;
 		}

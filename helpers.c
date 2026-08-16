@@ -81,12 +81,14 @@ char	**ft_split(char *input)
 	char	*start;
 	char	*end;
 	int		index;
+	int		words_count;
 
-	arr = malloc(sizeof(char *) * (count_words(input) + 1));
+	words_count = count_words(input);
+	arr = malloc(sizeof(char *) * (words_count + 1));
 	if (!arr)
 		return (NULL);
 	index = 0;
-	while (index < count_words(input))
+	while (index < words_count)
 	{
 		while (*input && is_space(*input))
 			input++;

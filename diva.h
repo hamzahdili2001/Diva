@@ -15,6 +15,7 @@ void		ft_putchar(char c);
 void		ft_putstr(char *str);
 void		ft_putnbr(long nbr);
 char		*ft_strrchr(char *s, int c);
+char		*ft_strcat(char *dest, char *src);
 char		*ft_strndup(char *str, int n);
 char		**ft_split(char *input);
 void		display_logo(void);
@@ -23,6 +24,7 @@ void		check_input(char *input);
 int			ft_scan(char *buffer);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_atoi(char *str);
+void		show_playlist(char *playlist);
 
 // commands:
 void		ft_help(char **args);

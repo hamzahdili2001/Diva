@@ -12,6 +12,23 @@ int	ft_strlen(char *str)
 	return (len);
 }
 
+char	*ft_strcat(char *dest, char *src)
+{
+	char	*base_dest;
+
+	base_dest = dest;
+	while (*dest)
+		dest++;
+	while (*src)
+	{
+		*dest = *src;
+		src++;
+		dest++;
+	}
+	*dest = '\0';
+	return (base_dest);
+}
+
 int	is_space(char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')

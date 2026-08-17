@@ -106,8 +106,7 @@ void	ft_playlist(char **args)
 			{
 				if (request == i)
 				{
-					// show_playlist(entry->d_name);
-					ft_putstr(entry->d_name);
+					show_playlist(entry->d_name);
 					closedir(dir);
 					return ;
 				}

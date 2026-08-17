@@ -14,3 +14,9 @@ core.*
 # OS files
 .DS_Store
 Thumbs.db
+
+# tests
+songs/
+songs/*
+playlists/*
+playlists/
